@@ -1,0 +1,799 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* 头部样式 */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn i {
+    font-size: 14px;
+}
+
+/* 主要内容区域 */
+main {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    min-height: 0;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    width: 250px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #444;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.module-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.module {
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    cursor: grab;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-left: 4px solid #6e8efb;
+}
+
+.module:hover {
+    background-color: #eef1f8;
+    transform: translateX(5px);
+}
+
+.module i {
+    font-size: 16px;
+    color: #6e8efb;
+    width: 20px;
+    text-align: center;
+}
+
+.module span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 画布容器样式 */
+.canvas-container {
+    flex: 1;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+}
+
+.canvas {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* 画布上的模块样式 */
+.canvas-module {
+    position: absolute;
+    min-width: 180px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.module-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.module-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-right: 8px;
+    background-color: #6e8efb;
+    color: white;
+}
+
+.module-title {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.module-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.module-actions i {
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.module-actions i:hover {
+    color: #333;
+}
+
+.module-actions .delete-module:hover {
+    color: #e74c3c;
+}
+
+.module-params {
+    padding: 8px 12px;
+    font-size: 12px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.param-item {
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.param-name {
+    color: #666;
+    margin-right: 8px;
+}
+
+.param-value {
+    color: #333;
+    font-weight: 500;
+}
+
+.canvas-module.selected {
+    border: 2px solid #6e8efb;
+    box-shadow: 0 0 0 2px rgba(110, 142, 251, 0.3);
+}
+.canvas-module {
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    cursor: move;
+    user-select: none;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.canvas-module.selected {
+    border-color: #6e8efb;
+}
+
+.canvas-module .module-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.canvas-module .module-title {
+    font-weight: 600;
+    font-size: 14px;
+    flex: 1;
+}
+
+.canvas-module .module-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 4px;
+}
+
+.canvas-module .connector {
+    width: 12px;
+    height: 12px;
+    background-color: #6e8efb;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+}
+
+.canvas-module .input-connector {
+    top: 50%;
+    left: -6px;
+    transform: translateY(-50%);
+}
+
+.canvas-module .output-connector {
+    top: 50%;
+    right: -6px;
+    transform: translateY(-50%);
+}
+
+/* 连线样式 */
+.connection {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.connection path {
+    fill: none;
+    stroke: #6e8efb;
+    stroke-width: 2;
+    stroke-dasharray: 5, 5;
+    animation: dash 1s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -10;
+    }
+}
+
+.connection.active path {
+    stroke-dasharray: none;
+}
+
+/* 代码面板样式 */
+.code-panel {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.code-panel h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.code-output {
+    flex: 1;
+    overflow: auto;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.code-output pre {
+    margin: 0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 400px;
+    max-width: 90%;
+    padding: 20px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close:hover {
+    color: #333;
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    color: #444;
+}
+
+.config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input,
+.form-group select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-footer .btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#save-config {
+    background-color: #6e8efb;
+    color: white;
+    border: none;
+}
+
+#cancel-config {
+    background-color: #f1f1f1;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+/* 连线模式指示器 */
+.connect-mode {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(110, 142, 251, 0.9);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.connect-mode.active {
+    display: flex;
+}
+
+.connect-mode i {
+    font-size: 16px;
+}
+
+/* 模块类型特定颜色 */
+.module[data-type="input"], .canvas-module[data-type="input"] .module-icon {
+    background-color: #4caf50;
+}
+
+.module[data-type="conv2d"], .canvas-module[data-type="conv2d"] .module-icon {
+    background-color: #2196f3;
+}
+
+.module[data-type="pooling"], .canvas-module[data-type="pooling"] .module-icon {
+    background-color: #9c27b0;
+}
+
+.module[data-type="dense"], .canvas-module[data-type="dense"] .module-icon {
+    background-color: #ff9800;
+}
+
+.module[data-type="dropout"], .canvas-module[data-type="dropout"] .module-icon {
+    background-color: #f44336;
+}
+
+.module[data-type="lstm"], .canvas-module[data-type="lstm"] .module-icon {
+    background-color: #00bcd4;
+}
+
+.module[data-type="gru"], .canvas-module[data-type="gru"] .module-icon {
+    background-color: #795548;
+}
+
+.module[data-type="rnn"], .canvas-module[data-type="rnn"] .module-icon {
+    background-color: #607d8b;
+}
+
+.module[data-type="output"], .canvas-module[data-type="output"] .module-icon {
+    background-color: #e91e63;
+}
+
+.module[data-type="activation"], .canvas-module[data-type="activation"] .module-icon {
+    background-color: #8bc34a;
+}
+
+.module[data-type="regularization"], .canvas-module[data-type="regularization"] .module-icon {
+    background-color: #673ab7;
+}
+
+.module[data-type="normalization"], .canvas-module[data-type="normalization"] .module-icon {
+    background-color: #03a9f4;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    main {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        max-height: 200px;
+    }
+    
+    .module-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .module {
+        width: calc(50% - 5px);
+    }
+}
+
+/* 模块参数样式 */
+.module-params {
+  width: 100%;
+  font-size: 12px;
+  margin-top: 5px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.param-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.param-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.param-name {
+  font-weight: 500;
+  color: #666;
+}
+
+.param-value {
+  color: #333;
+}
+
+.module-actions {
+  display: flex;
+  align-items: center;
+}
+
+.edit-module {
+  cursor: pointer;
+  color: #6e8efb;
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.edit-module:hover {
+  transform: rotate(45deg);
+}
+
+/* 配置表单样式 */
+.form-field {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-field label {
+  font-weight: 500;
+  color: #444;
+}
+
+.form-field input, .form-field select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-field input:focus, .form-field select:focus {
+  border-color: #6e8efb;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(110, 142, 251, 0.2);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-footer .btn {
+  background-color: #6e8efb;
+  color: white;
+}
+
+.modal-footer .btn:hover {
+  background-color: #5a7df9;
+}
+#save-config {
+    background-color: #6e8efb;
+    color: white;
+    border: none;
+}
+
+#cancel-config {
+    background-color: #f1f1f1;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+/* 连线模式指示器 */
+.connect-mode {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(110, 142, 251, 0.9);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.connect-mode.active {
+    display: flex;
+}
+
+.connect-mode i {
+    font-size: 16px;
+}
+
+/* 模块类型特定颜色 */
+.module[data-type="input"], .canvas-module[data-type="input"] .module-icon {
+    background-color: #4caf50;
+}
+
+.module[data-type="conv2d"], .canvas-module[data-type="conv2d"] .module-icon {
+    background-color: #2196f3;
+}
+
+.module[data-type="pooling"], .canvas-module[data-type="pooling"] .module-icon {
+    background-color: #9c27b0;
+}
+
+.module[data-type="dense"], .canvas-module[data-type="dense"] .module-icon {
+    background-color: #ff9800;
+}
+
+.module[data-type="dropout"], .canvas-module[data-type="dropout"] .module-icon {
+    background-color: #f44336;
+}
+
+.module[data-type="lstm"], .canvas-module[data-type="lstm"] .module-icon {
+    background-color: #00bcd4;
+}
+
+.module[data-type="gru"], .canvas-module[data-type="gru"] .module-icon {
+    background-color: #795548;
+}
+
+.module[data-type="rnn"], .canvas-module[data-type="rnn"] .module-icon {
+    background-color: #607d8b;
+}
+
+.module[data-type="output"], .canvas-module[data-type="output"] .module-icon {
+    background-color: #e91e63;
+}
+
+.module[data-type="activation"], .canvas-module[data-type="activation"] .module-icon {
+    background-color: #8bc34a;
+}
+
+.module[data-type="regularization"], .canvas-module[data-type="regularization"] .module-icon {
+    background-color: #673ab7;
+}
+
+.module[data-type="normalization"], .canvas-module[data-type="normalization"] .module-icon {
+    background-color: #03a9f4;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    main {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        max-height: 200px;
+    }
+    
+    .module-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .module {
+        width: calc(50% - 5px);
+    }
+}

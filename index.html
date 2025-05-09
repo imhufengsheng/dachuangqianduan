@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神经网络可视化构建工具</title>
+    <link rel="stylesheet" href="/dachuangqianduan/styles.css">
+    <link rel="stylesheet" href="/dachuangqianduan/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>神经网络可视化构建工具</h1>
+            <div class="actions">
+                <button id="connect-btn" class="btn"><i class="fas fa-link"></i> 连线模式</button>
+                <button id="export-btn" class="btn"><i class="fas fa-file-export"></i> 导出JSON</button>
+                <button id="clear-btn" class="btn"><i class="fas fa-trash"></i> 清空画布</button>
+            </div>
+        </header>
+        
+        <main>
+            <div class="sidebar">
+                <h2>神经网络模块</h2>
+                <div class="module-list">
+                    <!-- 输入层 -->
+                    <div class="module" draggable="true" data-type="input">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>输入层 (Input)</span>
+                    </div>
+                    
+                    <!-- 正则化层 -->
+                    <div class="module" draggable="true" data-type="regularization">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>正则化层 (Regularization)</span>
+                    </div>
+                    
+                    <!-- 激活层 -->
+                    <div class="module" draggable="true" data-type="activation">
+                        <i class="fas fa-bolt"></i>
+                        <span>激活层 (Activation)</span>
+                    </div>
+                    
+                    <!-- 标准化层 -->
+                    <div class="module" draggable="true" data-type="normalization">
+                        <i class="fas fa-balance-scale"></i>
+                        <span>标准化层 (Normalization)</span>
+                    </div>
+                    
+                    <!-- 输出层 -->
+                    <div class="module" draggable="true" data-type="output">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>输出层 (Output)</span>
+                    </div>
+                    
+                    <!-- 卷积层 -->
+                    <div class="module" draggable="true" data-type="conv2d">
+                        <i class="fas fa-filter"></i>
+                        <span>卷积层 (Conv2D)</span>
+                    </div>
+                    
+                    <!-- 池化层 -->
+                    <div class="module" draggable="true" data-type="pooling">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                        <span>池化层 (Pooling)</span>
+                    </div>
+                    
+                    <!-- 全连接层 -->
+                    <div class="module" draggable="true" data-type="dense">
+                        <i class="fas fa-network-wired"></i>
+                        <span>全连接层 (Dense)</span>
+                    </div>
+                    
+                    <!-- RNN层 -->
+                    <div class="module" draggable="true" data-type="rnn">
+                        <i class="fas fa-redo"></i>
+                        <span>RNN层 (RNN)</span>
+                    </div>
+                    
+                    <!-- LSTM层 -->
+                    <div class="module" draggable="true" data-type="lstm">
+                        <i class="fas fa-history"></i>
+                        <span>LSTM层 (LSTM)</span>
+                    </div>
+                    
+                    <!-- GRU层 -->
+                    <div class="module" draggable="true" data-type="gru">
+                        <i class="fas fa-recycle"></i>
+                        <span>门控循环单元 (GRU)</span>
+                    </div>
+                    
+                    <!-- Dropout层 -->
+                    <div class="module" draggable="true" data-type="dropout">
+                        <i class="fas fa-random"></i>
+                        <span>Dropout层 (Dropout)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="canvas-container">
+                <div id="canvas" class="canvas"></div>
+            </div>
+        </main>
+        
+        <div class="code-panel">
+            <h2>生成代码</h2>
+            <div id="code-output" class="code-output">
+                <pre><code>// 这里将显示生成的代码</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模块属性编辑弹窗 -->
+    <div id="module-config" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>配置模块参数</h2>
+            <div id="config-form" class="config-form">
+                <!-- 动态生成的表单内容 -->
+            </div>
+            <div class="modal-footer">
+                <button id="save-config" class="btn">保存</button>
+                <button id="cancel-config" class="btn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
